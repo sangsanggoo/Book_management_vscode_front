@@ -8,7 +8,7 @@ import { BsGoogle } from 'react-icons/bs'
 import { SiNaver, SiKakao } from 'react-icons/si'
 import axios from 'axios';
 import { useRecoilState } from 'recoil';
-import { authenticatedState } from '../../componets/UI/atoms/auth/AuthAtoms';
+import { authenticatedState, refreshState } from '../../componets/UI/atoms/auth/AuthAtoms';
 
 // 라우터 안에서 링크
 
@@ -143,7 +143,7 @@ const Login = () => {
     const [logUser, setLoginUser] = useState({email:"" , password: ""})
     const [errorMessage,setErrorMessage] = useState({email: "",password: ""})
     const [ authenticated, setAuthenticated] = useRecoilState(authenticatedState);
-
+    const [ refresh, setRefresh] = useRecoilState(refreshState);
 
     const navigate = useNavigate();
     // auth를 setAuth로 넣으면 authenticated에 넣어주는거 전역변수에 값을 넣어주는거
@@ -166,7 +166,7 @@ const Login = () => {
             setErrorMessage({email : "", password: ""});
             const accessToken = response.data.grantType + " " + response.data.accessToken;
             localStorage.setItem("accessToken",accessToken);
-            setAuthenticated(true);
+            setRefresh(true);
             navigate("/");
             
 
