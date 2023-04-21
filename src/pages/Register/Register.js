@@ -162,7 +162,7 @@ const  Register = () => {
         // await를 쓰면 then을 사용한거랑 같아짐
         // try catch써서 실행하고 오류나면 catch가 실행
         try {
-            const response = await axios.post("http://localhost:8080/auth/signup", JSON.stringify(data),option);
+            const response = await axios.post("http://localhost:8080/auth/register", JSON.stringify(data),option);
             setErrorMessage({email : "", password: "", name: ""});
             if(response.status == 200) {
                 console.log("성공");

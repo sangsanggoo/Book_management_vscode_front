@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { css } from '@emotion/react';
 import LoginInput from '../../componets/UI/Login/LoginInput/LoginInput';
 import { FiUser ,FiLock } from 'react-icons/fi';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { BsGoogle } from 'react-icons/bs'
 import { SiNaver, SiKakao } from 'react-icons/si'
 import axios from 'axios';
@@ -144,6 +144,8 @@ const Login = () => {
     const [errorMessage,setErrorMessage] = useState({email: "",password: ""})
     const [ authenticated, setAuthenticated] = useRecoilState(authenticatedState);
 
+
+    const navigate = useNavigate();
     // auth를 setAuth로 넣으면 authenticated에 넣어주는거 전역변수에 값을 넣어주는거
     const onChangeHandle = (e) => {
         const {name, value} = e.target;
@@ -162,9 +164,10 @@ const Login = () => {
             const response  = await axios.post("http://localhost:8080/auth/login",JSON.stringify(data),option)
             alert("로그인 성공");
             setErrorMessage({email : "", password: ""});
-            const acessToken = response.data.GranType + " " + response.data.accessToken;
-            localStorage.setItem("acessToken",acessToken);
+            const accessToken = response.data.grantType + " " + response.data.accessToken;
+            localStorage.setItem("accessToken",accessToken);
             setAuthenticated(true);
+            navigate("/");
             
 
         } catch(error) {
@@ -214,7 +217,7 @@ const Login = () => {
                 <div css={signupMessage}>Or Sign Up Using</div>
 
             <footer>
-                <div css={register}><Link to="/signup" >REGISTER</Link></div>
+                <div css={register}><Link to="/register" >REGISTER</Link></div>
             </footer>
 
         </div>
