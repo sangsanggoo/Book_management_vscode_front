@@ -1,14 +1,16 @@
-import { css } from "@emotion/react"
+import { css } from '@emotion/react';
 
 export const Reset = css`
     /* http://meyerweb.com/eric/tools/css/reset/ 
     v2.0 | 20110126
     License: none (public domain)
     */
+
     * {
         box-sizing: border-box;
         color: #333;
     }
+
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
     a, abbr, acronym, address, big, cite, code,
@@ -24,7 +26,7 @@ export const Reset = css`
     time, mark, audio, video {
         margin: 0;
         padding: 0;
-        border: 0;  
+        border: 0;
         font-size: 100%;
         font: inherit;
         vertical-align: baseline;
@@ -56,5 +58,5 @@ export const Reset = css`
     table {
         border-collapse: collapse;
         border-spacing: 0;
-}
-`
+    }
+`;
