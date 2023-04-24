@@ -29,7 +29,7 @@ const AuthRouteReactQuery = ({ path, element }) => {
     if(isLoading) {
         return (<div>로딩중...</div>)
     }
-
+    // 이때 제 렌더링
     if(!isLoading) {
         const permitAll = ["/login","/register","/password/forgot"];
         if(!data.data) {
